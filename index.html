@@ -14,7 +14,40 @@
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="js/scripts.js"></script>
-	<script src="js/jquery.uploadprogress.js"></script>
+	
+	<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+	<script src="!js/vendor/jquery.ui.widget.js"></script>
+	<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+	<script src="!js/jquery.iframe-transport.js"></script>
+	<!-- The basic File Upload plugin -->
+	<script src="!js/jquery.fileupload.js"></script>
+	<script>
+	/*jslint unparam: true */
+	/*global window, $ */
+	$(function () {
+	    'use strict';
+	    // Change this to the location of your server-side upload handler:
+	    var url = window.location.hostname === 'blueimp.github.io' ?
+	                '//jquery-file-upload.appspot.com/' : '!img/';
+	    $('#fileupload').fileupload({
+	        url: url,
+	        dataType: 'json',
+	        done: function (e, data) {
+	            $.each(data.result.files, function (index, file) {
+	                $('<p/>').text(file.name).appendTo('#files');
+	            });
+	        },
+	        progressall: function (e, data) {
+	            var progress = parseInt(data.loaded / data.total * 100, 10);
+	            $('#progress .progress-bar').css(
+	                'width',
+	                progress + '%'
+	            );
+	        }
+	    }).prop('disabled', !$.support.fileInput)
+	        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+	});
+	</script>
 
 </head>
 <body>
@@ -35,13 +68,12 @@
 		<div class="add">
 			<h3>Add Your Own</h3>
 			<label for="name">Your Name <span class="req">*</span></label>
-			<input type="text" id="name" />
-			
-			<!-- The file input field used as target for the file upload widget -->
-			<input id="fileupload" type="file" name="files[]" multiple>
-			
-			<div id="progress">
-				<div class="bar" style="width: 0%;"></div>
+			<input type="text" id="name" class="clear" />
+
+			<div class="upload clearfix">			
+				<label for="fileupload" class="btn">RV Image</label>
+				<div id="files" class="files"></div>
+				<input id="fileupload" type="file" name="files[]" multiple>
 			</div>
 
 			<label for="rvname">RV Name <span class="req">*</span></label>
@@ -52,10 +84,8 @@
 			
 			<label for="description">Description <span class="req">*</span></label>
 			<input type="text" id="description" />
-
-			<label for="image">Image</label>
 			
-			<button type="submit" class="submitrv">Submit</button>
+			<button type="submit" class="btn submitrv">Submit</button>
 		</div>
 		
 	</div>

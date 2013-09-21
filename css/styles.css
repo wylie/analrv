@@ -12,6 +12,21 @@ html, body {
 body div {
 	box-sizing: border-box;
 }
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
 a {
 	color: inherit;
 	text-decoration: inherit;
@@ -61,7 +76,7 @@ input[type="text"] {
 input[type="text"]:focus {
 	background-color: #555;
 }
-[type="submit"] {
+.btn {
 	border: none;
 	font-size: 14px;
 	padding: 5px;
@@ -71,18 +86,40 @@ input[type="text"]:focus {
 	margin: 10px 0 0;
 	cursor: pointer;
 	position: relative;
+	display: inline-block;
 }
-[type="submit"]:hover {
+.primary-action {
+	background-color: orange;
+}
+.btn:hover {
 	background-color: #555;
 }
-[type="submit"]:active {
+.btn:active {
 	background-color: #444;
 	top: 1px;
 }
 .req {
 	color: #F00;
 }
+#fileupload {
+	display: none;
+}
 
+.upload {
+	margin: 10px 0;
+	cursor: pointer;
+}
+.upload .btn {
+	margin-top: 0;
+}
+.upload .files {
+	position: relative;
+	font-size: .75em;
+	display: inline-block;
+}
+#sidebar .upload p {
+	padding: 0;
+}
 
 #content {
 	margin: 0;

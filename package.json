@@ -1,0 +1,19 @@
+{
+  "name": "AnalRV",
+  "description": "A road trip game.",
+  "version": "0.1.0",
+  "keywords": [
+    "Anal RV"
+  ],
+  "author": "Wylie",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wylie/analrv.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-less": "~0.7.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-php": "~0.2.0"
+  }
+}

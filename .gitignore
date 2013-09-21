@@ -1,3 +1,5 @@
 node_modules/
 
 rvs.json
+
+!rsrc/db_connect.php

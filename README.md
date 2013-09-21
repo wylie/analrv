@@ -1,5 +1,4 @@
 #Anal RV
----
 
 **What is Anal RV?** It's a game to play while in the car. This site is a place to post the names and/or photos of the RV's you see.
 

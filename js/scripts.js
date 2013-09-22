@@ -1,5 +1,21 @@
 $(function() {
 
+	function rvupload(x) {
+
+		$('.submitrv').on('click', function() {
+		
+			var username = $('#name').val();
+			var rvname = $('#rvname').val();
+			var tags = $('#tags').val();
+			var description = $('#description').val();
+			var image = x;
+			$.post('rsrc/upload.php', {username:username, rvname:rvname,tags:tags,description:description, image:image}, function(data) {
+				console.log(data);
+			});
+		});
+
+	}
+
 	// file uplaod
 	'use strict';
 	// Change this to the location of your server-side upload handler:
@@ -9,8 +25,8 @@ $(function() {
 		dataType: 'json',
 		done: function (e, data) {
 			$.each(data.result.files, function (index, file) {
-				$('<p/>').text(file.name).appendTo('#files');
-				var imgName = file.name;
+				$('<p/>').text(file.name).appendTo('.files');
+				rvupload(file.name);
 			});
 		},
 		progressall: function (e, data) {
@@ -105,22 +121,6 @@ $(function() {
 				changepage(setup, setup.length-1);
 				
 			});
-		});
-	});
-	
-	
-	
-	$('.submitrv').on('click', function() {
-	
-		var username = $('#name').val();
-		var rvname = $('#rvname').val();
-		var tags = $('#tags').val();
-		var description = $('#description').val();
-		var imgName = $('#image').val();
-		//console.log(username);	
-	
-		$.post('rsrc/upload.php', {username:username, rvname:rvname,tags:tags,description:description, image:image}, function(data) {
-			console.log(data);
 		});
 	});
 		

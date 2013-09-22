@@ -1,9 +1,16 @@
 $(function() {
 
+	function createJSON() {
+		$.get('rsrc/get-stuff.php', function(data) {
+			//awesome
+		});
+	}
+
 	function rvupload(x) {
 
-		$('.submitrv').on('click', function() {
-		
+		$(document).on('click', '.submitrv', function() {
+			createJSON();	
+			var id = $('.rvid').val();
 			var username = $('#name').val();
 			var rvname = $('#rvname').val();
 			var tags = $('#tags').val();
@@ -64,7 +71,11 @@ $(function() {
 		$('.content').append( x[e] );
 	}
 
-	
+	function updateID(n) {
+		$('.add').append('<p class="rvid">' + n + '</p>')
+
+	}
+
 	function changepage(x, y) {
 		// should go down by 5
 		var one = y; // 58
@@ -75,52 +86,52 @@ $(function() {
 		displayRVs(x, one, two, three, four, five);
 	}
 		
-	$.get('rsrc/get-stuff.php', function(data) {
-		$.getJSON('rvs.json', function(data) {
-			$.each(data, function(index, rvs) {
-				var setup = [];
-				for(var i = 0; i < rvs.length; i++) {
-					var name = '<li><h2>#' + rvs[i].number + ' ' + rvs[i].name + '</h2></li>';
-					var user = '<li><strong>Submitted by:</strong> ' + rvs[i].user + '</li>';
-					var tags = rvs[i].tags;
-					if(tags) {
-						var tags = '<li><strong>Tags:</strong> ' + tags + '</li>';
-					}
-					var description = '<li><strong>Description:</strong> ' + rvs[i].description + '</li>';
-					var image = rvs[i].image;
-					if(image) {
-						var image = '<li><img src="' + image + '" /></li>';
-					}							
-					var date = '<li><strong>Spotted on:</strong> ' + rvs[i].date + '</li>';
-					setup.push('<ul class="rv" id="' + rvs[i].number + '">' + name + user + tags + description + image + date + '</ul>');
+	$.getJSON('rvs.json', function(data) {
+		$.each(data, function(index, rvs) {
+			var setup = [];
+			for(var i = 0; i < rvs.length; i++) {
+				var name = '<li><h2>#' + rvs[i].number + ' ' + rvs[i].name + '</h2></li>';
+				var user = '<li><strong>Submitted by:</strong> ' + rvs[i].user + '</li>';
+				var tags = rvs[i].tags;
+				if(tags) {
+					var tags = '<li><strong>Tags:</strong> ' + tags + '</li>';
 				}
-				var chNum = 5;
-				var mult = 0;
-				var pg = 1;
-								
-				$(document).on('click', '.nav-link', function() {
-					var dir = $(this).data('direction');
-					// increase or decrease the multiplier and the page numbers
-					if(dir === 'next') {
-						pg++;
-						mult++;
-					} else {
-						pg--;
-						mult--;
-					}
-					// multiply the number of RVs shown by the page number
-					var newNum = chNum * mult;
-					// fix the number of the array
-					var display = setup.length - 1;
-					changepage(setup, display - newNum);
-					// send off the page number to enable or disable the buttons based on the page number
-					pages(pg, display, chNum);
-					
-				});
-								
-				changepage(setup, setup.length-1);
+				var description = '<li><strong>Description:</strong> ' + rvs[i].description + '</li>';
+				var image = rvs[i].image;
+				if(image) {
+					var image = '<li><img src="' + image + '" /></li>';
+				}							
+				var date = '<li><strong>Spotted on:</strong> ' + rvs[i].date + '</li>';
+				setup.push('<ul class="rv" id="' + rvs[i].number + '">' + name + user + tags + description + image + date + '</ul>');
+			}
+			var chNum = 5;
+			var mult = 0;
+			var pg = 1;
+
+			updateID(setup.length);
+
+			$(document).on('click', '.nav-link', function() {
+				var dir = $(this).data('direction');
+				// increase or decrease the multiplier and the page numbers
+				if(dir === 'next') {
+					pg++;
+					mult++;
+				} else {
+					pg--;
+					mult--;
+				}
+				// multiply the number of RVs shown by the page number
+				var newNum = chNum * mult;
+				// fix the number of the array
+				var display = setup.length - 1;
+				changepage(setup, display - newNum);
+				// send off the page number to enable or disable the buttons based on the page number
+				pages(pg, display, chNum);
 				
 			});
+							
+			changepage(setup, setup.length-1);
+			
 		});
 	});
 		

@@ -50,6 +50,9 @@ a {
 	padding: 0 0 20px;
 	color: #CCC;
 }
+.sidebar .rvid {
+	display: none;
+}
 label {
 	font-size: .85em;
 	color: #CCC;

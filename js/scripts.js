@@ -1,4 +1,26 @@
 $(function() {
+
+	// file uplaod
+	'use strict';
+	// Change this to the location of your server-side upload handler:
+	var url = window.location.hostname === 'blueimp.github.io' ? '//jquery-file-upload.appspot.com/' : 'img/';
+	$('#fileupload').fileupload({
+		url: url,
+		dataType: 'json',
+		done: function (e, data) {
+			$.each(data.result.files, function (index, file) {
+				$('<p/>').text(file.name).appendTo('#files');
+				var imgName = file.name;
+			});
+		},
+		progressall: function (e, data) {
+			var progress = parseInt(data.loaded / data.total * 100, 10);
+			$('#progress .progress-bar').css(
+				'width',
+				progress + '%'
+			);
+		}
+	}).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
 	
 	function pages(pg, display, chNum) {
 		var maxPG = Math.ceil(display / chNum);
@@ -37,7 +59,7 @@ $(function() {
 		displayRVs(x, one, two, three, four, five);
 	}
 		
-	$.get('!rsrc/get-stuff.php', function(data) {
+	$.get('rsrc/get-stuff.php', function(data) {
 		$.getJSON('rvs.json', function(data) {
 			$.each(data, function(index, rvs) {
 				var setup = [];
@@ -94,10 +116,10 @@ $(function() {
 		var rvname = $('#rvname').val();
 		var tags = $('#tags').val();
 		var description = $('#description').val();
-		var image = $('#image').val();
+		var imgName = $('#image').val();
 		//console.log(username);	
 	
-		$.post('!rsrc/upload.php', {username:username, rvname:rvname,tags:tags,description:description, image:image}, function(data) {
+		$.post('rsrc/upload.php', {username:username, rvname:rvname,tags:tags,description:description, image:image}, function(data) {
 			console.log(data);
 		});
 	});

@@ -20,7 +20,6 @@
 						'description'=> $row[5],
 						'image'=> $row[6],
 						'date'=> $date
-				
 				);
 				
 				$file = file_get_contents($filename);

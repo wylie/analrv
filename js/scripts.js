@@ -37,7 +37,7 @@ $(function() {
 		displayRVs(x, one, two, three, four, five);
 	}
 		
-	$.get('!rsrc/get-stuff-json.php', function(data) {
+	$.get('!rsrc/get-stuff.php', function(data) {
 		$.getJSON('rvs.json', function(data) {
 			$.each(data, function(index, rvs) {
 				var setup = [];

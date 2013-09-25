@@ -8,10 +8,23 @@ module.exports = function(grunt) {
 				options: {
 					port: 7007,
 					hostname: 'localhost',
-					base: '',
+					bases: "site",
 					keepalive: true,
 					open: true
 				}
+			}
+		},
+		less: {
+			development: {
+				files: {
+					"site/css/styles.css": "site/css/styles.less"
+				}
+			}
+		},
+		watch: {
+			css: {
+				files: ['site/css/styles.less'],
+				tasks: ['less']
 			}
 		}
 	});
@@ -25,7 +38,8 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask("server", [
-		"php"
+		"php",
+		"watch"
 	]);
 	
 };

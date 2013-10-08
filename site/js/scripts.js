@@ -64,11 +64,11 @@ $(function() {
 
 	function displayRVs(x, a, b, c, d, e) {
 		$('.rv').remove();
-		$('.content').append( x[a] );
-		$('.content').append( x[b] );
-		$('.content').append( x[c] );
-		$('.content').append( x[d] );
-		$('.content').append( x[e] );
+		$('.heading').after( x[a] );
+		$('.heading').after( x[b] );
+		$('.heading').after( x[c] );
+		$('.heading').after( x[d] );
+		$('.heading').after( x[e] );
 	}
 
 	function updateID(n) {
@@ -110,7 +110,7 @@ $(function() {
 
 			updateID(setup.length);
 
-			$(document).on('click', '.nav-link', function() {
+			$(document).on('click', 'button.nav-link', function() {
 				var dir = $(this).data('direction');
 				// increase or decrease the multiplier and the page numbers
 				if(dir === 'next') {

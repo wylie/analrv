@@ -1,7 +1,7 @@
 {
   "name": "AnalRV",
   "description": "A road trip game.",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "keywords": [
     "Anal RV"
   ],
@@ -14,6 +14,7 @@
     "grunt": "~0.4.1",
     "grunt-contrib-less": "~0.7.0",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-php": "~0.2.0"
+    "grunt-php": "~0.2.0",
+    "bower": "~1.2.7"
   }
 }

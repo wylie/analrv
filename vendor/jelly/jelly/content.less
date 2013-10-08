@@ -1,0 +1,146 @@
+// HEADERS
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: bold;
+	line-height: 1em;
+}
+h1 {
+	font-size: 2.5em;
+}
+h2 {
+	font-size: 2em;
+}
+h3 {
+	font-size: 1.75em;
+}
+h4 {
+	font-size: 1.5em;
+}
+h5 {
+	font-size: 1.25em;
+}
+h6 {
+	font-size: 1em;
+}
+
+// PARAGRAPHS
+p {
+	margin-bottom: 1em;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+// LINKS
+a {
+	color: @link-color;
+	text-decoration: none;
+	&:visited {
+		color: darken(@link-color, 5%);
+	}
+	&:hover,
+	&:focus {
+		color: darken(@link-color, 15%);
+		text-decoration: underline;	
+	}
+	&:active {
+		color: darken(@link-color, 20%);
+	}
+}
+
+// LISTS
+ul > ul,
+li > ul {
+	margin-left: 1em;
+}
+ul + ul,
+ol + ul,
+ul + ol,
+ol + ol {
+	margin-top: 1em;
+}
+ol {
+	&.decimal {
+		list-style-type: decimal;
+		margin-left: 30px;
+	}
+	&.circle {
+		list-style-type: circle;
+		margin-left: 30px;
+	}
+	&.disc {
+		list-style-type: disc;
+		margin-left: 30px;
+	}
+	&.lower-alpha {
+		list-style-type: lower-alpha;
+		margin-left: 30px;
+	}
+}
+
+// BUTTONS
+button {
+	background-color: lighten(@base-color, 65%);
+	border: none;
+	border-radius: 3px;
+	padding: 2px 8px;
+	font-size: @em;
+	cursor: pointer;
+	&:focus,
+	&:hover {
+		background-color: lighten(@base-color, 55%);
+	}
+	&:active {
+		background-color: lighten(@base-color, 50%);
+		position: relative;
+		top:1px;
+	}
+	&.primary {
+		background-color: @primary-color;
+		&:focus,
+		&:hover {
+			background-color: darken(@primary-color, 10%);
+		}
+		&:active {
+			background-color: darken(@primary-color, 20%);
+		}
+	}
+}
+
+// FORMS
+input,
+textarea {
+	border: 1px solid lighten(@base-color, 65%);
+	font-size: @em;
+	box-sizing: border-box;
+}
+textarea {
+	vertical-align: top;
+}
+
+// OTHERS
+hr {
+	height: 1px;
+	border: none;
+	background-color: lighten(@base-color, 65%);
+}
+blockquote {
+	margin-left: 20px;
+	border-left: 2px solid lighten(@base-color, 65%);
+	padding: 5px 0 5px 10px;	
+}
+small, 
+sub,
+sup {
+	font-size: @small-font-size;
+}
+sub {
+	vertical-align: sub;
+}
+sup {
+	vertical-align: super;
+}

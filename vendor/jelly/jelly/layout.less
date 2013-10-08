@@ -1,0 +1,95 @@
+// set up the base column
+.col,
+header,
+footer, {
+	width: @pgWidth;
+	vertical-align: top;
+	box-sizing: border-box;
+}
+// column alignment
+.dir(@dir: @x) {
+	.@{dir} {
+		header,
+		footer,
+		.col,
+		.row {
+			float: @dir;
+		}
+	}
+}
+.dir(left);
+.dir(right);
+.center {
+	header,
+	footer,
+	.col,
+	.row {
+		margin: auto;
+	}
+}
+// rows
+.row {
+	display: table;
+	width: @pgWidth;
+	> .lay {
+		display: table-row;
+		> .col,
+		header,
+		footer, {
+			display: table-cell;
+		}
+		&.one {
+			> .col {
+				&:nth-child(1) {
+					min-width: 100px;
+					width: (@pct * .1);
+				}
+				&:nth-child(2) {
+					width: (@pct * .9);
+				}
+			}
+		}
+		&.two {
+			> .col {
+				&:nth-child(1) {
+					min-width: 125px;
+					width: (@pct * .2);
+				}
+				&:nth-child(2) {
+					width: (@pct * .8);
+				}
+			}
+		}
+		&.three {
+			> .col {
+				&:nth-child(1) {
+					min-width: 150px;
+					width: (@pct * .3);
+				}
+				&:nth-child(2) {
+					width: (@pct * .7);
+				}
+			}
+		}
+		&.four {
+			> .col {
+				&:nth-child(1) {
+					min-width: 175px;
+					width: (@pct * .4);
+				}
+				&:nth-child(2) {
+					width: (@pct * .6);
+				}
+			}
+		}
+		&.five {
+			> .col {
+				&:nth-child(1),
+				&:nth-child(2) {
+					min-width: 200px;
+					width: (@pct * .5);
+				}
+			}
+		}
+	}
+}

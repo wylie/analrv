@@ -10,6 +10,7 @@
 	<meta name="keywords" content="RV, Recreational Vehicle, vacation, photos, anal, fun, road trip, games, family, hilarious, travel, adventure, boys, girls, car, automobile" />
 	<meta name="viewport" content="width=400, initial-scale=.8, user-scalable=no">
 	
+	<link rel="stylesheet" href="../vendor/jelly/jelly.min.css" />
 	<link rel="stylesheet" href="css/styles.css" />
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -25,46 +26,48 @@
 </head>
 <body>
 
-<div class="wrapper">
+<div class="row">
+	<div class="lay three">
 
-
-	<div class="sidebar">
-		<div class="description">		
-			<h3>What is Anal RV?</h3>
-			<p>It's a game to play while in the car. This site is a place to post the names and/or photos of the RV's you see.</p>
-			<h3>How Do You Play?</h3>
-			<p>It's simple, as you drive around take the name of any RV's that you may see and add the word anal in front of it. Simple, right?</p>	
-			<h3>Need an Example?</h3>
-			<p>Okay, lets say you are see an RV whos name is the Expedition. Just take the name Expedition and add Anal in front of it. The new name for that RV is the Anal Expedition. Got it?</p>
-		</div>
-		<div class="add">
-			<h3>Add Your Own</h3>
-			<label for="name">Your Name <span class="req">*</span></label>
-			<input type="text" id="name" class="clear" />
-			<div class="upload clearfix">			
-				<label for="fileupload" class="btn">RV Image</label>
-				<div class="files"></div>
-				<input id="fileupload" type="file" name="files[]" multiple>
+		<div class="col">
+			<div class="module">
+				<h3>What is Anal RV?</h3>
+				<p>It's a game to play while in the car. This site is a place to post the names and/or photos of the RV's you see.</p>
+				<h3>How Do You Play?</h3>
+				<p>It's simple, as you drive around take the name of any RV's that you may see and add the word anal in front of it. Simple, right?</p>	
+				<h3>Need an Example?</h3>
+				<p>Okay, lets say you are see an RV whos name is the Expedition. Just take the name Expedition and add Anal in front of it. The new name for that RV is the Anal Expedition. Got it?</p>
 			</div>
-			<label for="rvname">RV Name <span class="req">*</span></label>
-			<input type="text" id="rvname" />
-			<label for="tags">Tags</label>
-			<input type="text" id="tags" />
-			<label for="description">Description <span class="req">*</span></label>
-			<input type="text" id="description" />
-			<button type="submit" class="btn submitrv">Submit</button>
+			<div class="module">
+				<h3>Add Your Own</h3>
+				<label for="name">Your Name <span class="req">*</span></label>
+				<input type="text" id="name" class="clear" />
+				<div class="upload clearfix">			
+					<label for="fileupload" class="btn">RV Image</label>
+					<div class="files"></div>
+					<input id="fileupload" type="file" name="files[]" multiple>
+				</div>
+				<label for="rvname">RV Name <span class="req">*</span></label>
+				<input type="text" id="rvname" />
+				<label for="tags">Tags</label>
+				<input type="text" id="tags" />
+				<label for="description">Description <span class="req">*</span></label>
+				<input type="text" id="description" />
+				<button type="submit" class="btn submitrv">Submit</button>
+			</div>
 		</div>
-		
-	</div>
-	<div class="content">
-	<h1>
-		<div class="nav">
-			<button class="nav-link" data-direction="back" disabled="disabled">newer</button>
-			<div class="pg-num">1</div>
-			<button class="nav-link" data-direction="next">older</button>
+		<div class="col">
+			<div class="heading">
+				<h1>
+					<a href="/">Anal RV</a>
+				</h1>
+				<div class="nav">
+					<button class="nav-link" data-direction="back" disabled="disabled">newer</button>
+					<div class="nav-link pg-num">1</div>
+					<button class="nav-link" data-direction="next">older</button>
+				</div>
+			</div>
 		</div>
-		<a href="/">Anal RV</a>
-	</h1>
 	</div>
 </div>
 

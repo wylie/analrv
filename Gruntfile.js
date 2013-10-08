@@ -34,7 +34,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks("grunt-contrib-watch");
 
 	grunt.registerTask("compile", [
-		"less"
+		"less",
+		"watch"
 	]);
 
 	grunt.registerTask("server", [

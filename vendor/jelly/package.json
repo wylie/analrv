@@ -1,0 +1,20 @@
+{
+  "name": "Jelly",
+  "description": "A basic CSS framework",
+  "version": "0.0.1",
+  "keywords": [
+    "Jelly CSS Frame Worker"
+  ],
+  "author": "Wylie",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wylie/jelly.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-less": "~0.6.1",
+    "grunt-express": "~0.3.6",
+    "express": "~3.3.1",
+    "grunt-contrib-watch": "~0.5.2"
+  }
+}

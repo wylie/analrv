@@ -17,7 +17,7 @@
 
 ---
 
-* this uses [**grunt-php**][2], which requires **PHP 5.4.0+**
+\*this uses [**grunt-php**][2], which requires **PHP 5.4.0+**
 
 
   [1]: http://lesscss.org/

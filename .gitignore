@@ -2,4 +2,6 @@ node_modules/
 
 site/rvs.json
 
-site/img/rvs/
+site/img/rvs/*.jpg
+site/img/rvs/*.jpeg
+site/img/rvs/*.JPG

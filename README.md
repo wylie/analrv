@@ -1,6 +1,4 @@
-#Anal RV
-
----
+# Anal RV
 
 ## To Begin
 1. Clone this repo `git clone https://github.com/wylie/analrv.com.git`

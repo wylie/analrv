@@ -8,22 +8,32 @@ module.exports = function(grunt) {
 				options: {
 					port: 7007,
 					hostname: 'localhost',
-					bases: "/site",
 					keepalive: true,
 					open: true
 				}
 			}
 		},
 		less: {
-			development: {
+			dev: {
 				files: {
-					"site/css/styles.css": "site/css/styles.less"
+					"dist/css/styles.css": "src/less/styles.less"
+				}
+			},
+			dist: {
+				files: {
+					"dist/css/styles.css": "src/less/styles.less"
+				},
+				options: {
+					compress: true,
+					yuicompress: true,
+					report: 'gzip'
 				}
 			}
 		},
+
 		watch: {
 			css: {
-				files: ['site/css/styles.less'],
+				files: ['src/less/*.less'],
 				tasks: ['less']
 			}
 		}
@@ -33,12 +43,17 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks("grunt-contrib-less");
 	grunt.loadNpmTasks("grunt-contrib-watch");
 
-	grunt.registerTask("compile", [
+	grunt.registerTask("src", [
 		"less",
 		"watch"
 	]);
 
 	grunt.registerTask("server", [
+		"php",
+		"watch"
+	]);
+
+	grunt.registerTask("dev", [
 		"php",
 		"watch"
 	]);

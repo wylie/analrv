@@ -1,7 +1,5 @@
 node_modules/
 vendor/
 
-site/rvs.json
-site/img/rvs/*.jpg
-site/img/rvs/*.jpeg
-site/img/rvs/*.JPG
+src/rvs.json
+dist/rvs.json

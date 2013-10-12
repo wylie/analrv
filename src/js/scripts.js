@@ -64,11 +64,11 @@ $(function() {
 
 	function displayRVs(x, a, b, c, d, e) {
 		$('.rv').remove();
-		$('.heading').after( x[a] );
-		$('.heading').after( x[b] );
-		$('.heading').after( x[c] );
-		$('.heading').after( x[d] );
 		$('.heading').after( x[e] );
+		$('.heading').after( x[d] );
+		$('.heading').after( x[c] );
+		$('.heading').after( x[b] );
+		$('.heading').after( x[a] );
 	}
 
 	function updateID(n) {

@@ -10,11 +10,12 @@
     "type": "git",
     "url": "https://github.com/wylie/analrv.git"
   },
-  "devDependencies": {
+  "dependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-less": "~0.7.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-php": "~0.2.0",
-    "bower": "~1.2.7"
+    "bower": "~1.2.7",
+    "requirejs": "~2.1.8"
   }
 }

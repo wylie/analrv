@@ -1,6 +1,5 @@
 $(function() {
 
-
 	function createJSON() {
 		$.get('rsrc/get-stuff.php', function(data) {
 			//awesome

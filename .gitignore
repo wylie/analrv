@@ -1,8 +1,10 @@
-node_modules/
-
-rvs.json
-
-.sass-cache
-
+# files
 rsrc/OLD-upload.php
 rsrc/db_user_variables.php
+rvs.json
+.sass-cache
+*/img/rvs/*
+live/css/*
+
+# directories
+node_modules/

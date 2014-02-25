@@ -126,7 +126,8 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask("live", [
-		"sass:live"
+		"sass:live",
+		"copy:dev"
 	]);
 	
 };

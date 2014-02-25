@@ -15,8 +15,8 @@ module.exports = function(grunt) {
 			},
 			watch: {
 				css: {
-					files: ['css/*.scss'],
-					tasks: ['sass', 'copy:css'],
+					files: ['scss/*.scss'],
+					tasks: ['sass:dist', 'copy:css'],
 					options: {
 						spawn: false,
 						livereload: false
@@ -33,19 +33,50 @@ module.exports = function(grunt) {
 			}
 		},
 		sass: {
-			dist: {
+			dev: {
 				options: {
 					style: 'expanded'
 				},
 				files: {
-					'live/css/styles.css': 'dev/css/styles.scss'
+					'live/css/styles.css': 'dev/scss/styles.scss'
+				}
+			},
+			live: {
+				options: {
+					style: 'compressed'
+				},
+				files: {
+					'live/css/styles.css': 'dev/scss/styles.scss'
 				}
 			}
 		},
 		copy: {
-			main: {
-				src: 'dev/*',
-				dest: 'live/',
+			dev: {
+				files: [
+					{
+						expand: true,
+						src: 'dev/img/*',
+						dest: 'live/img/',
+						flatten: true
+					},
+					{
+						expand: true,
+						src: 'dev/js/*',
+						dest: 'live/js/',
+						flatten: true
+					},
+					{
+						src: 'dev/index.html',
+						dest: 'live/index.html',
+						filter: 'isFile'
+					},
+					{
+						expand: true,
+						src: 'dev/rsrc/*',
+						dest: 'live/rsrc/',
+						flatten: true
+					}
+				]
 			}
 		},
 		watch: {
@@ -58,7 +89,7 @@ module.exports = function(grunt) {
 				}
 			},
 			css: {
-				files: ['dev/css/*'],
+				files: ['dev/scss/*'],
 				tasks: ['sass', 'copy:css'],
 				options: {
 					spawn: false,
@@ -79,12 +110,11 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks("grunt-php");
 	grunt.loadNpmTasks("grunt-contrib-sass");
-	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks("grunt-contrib-copy");
 	grunt.loadNpmTasks("grunt-contrib-watch");
 
 	grunt.registerTask("phpwatch", [
-		"php:watch",
-		"watch"
+		"php:watch"
 	]);
 
 	grunt.registerTask("server", [
@@ -92,12 +122,11 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask("dev", [
-		"copy",
-		"phpwatch"
+		"watch"
 	]);
 
 	grunt.registerTask("live", [
-		"copy"
+		"sass:live"
 	]);
 	
 };

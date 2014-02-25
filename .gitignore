@@ -1,10 +1,10 @@
 # files
-rsrc/OLD-upload.php
-rsrc/db_user_variables.php
-rvs.json
-.sass-cache
-*/img/rvs/*.jp*
-live/css/*
+dev/rsrc/OLD-upload.php
+dev/rsrc/db_user_variables.php
+dev/rvs.json
+dev/img/rvs/*.jp*
 
 # directories
 node_modules/
+live/
+.sass-cache

@@ -3,6 +3,7 @@ dev/rsrc/OLD-upload.php
 dev/rsrc/db_user_variables.php
 dev/rvs.json
 dev/img/rvs/*.jp*
+*.DS*
 
 # directories
 node_modules/

@@ -1,0 +1,79 @@
+.sidebar {
+	float: left;
+	margin-top: 135px;
+	width: 225px;
+	h3 {
+		margin: 0;
+	}
+	p {
+		margin: 0;
+		padding: 0 0 20px;
+		color: #CCC;
+	}
+	.rvid {
+		display: none;
+	}
+}
+label {
+	font-size: .85em;
+	color: #CCC;
+}		
+
+input[type="text"] {
+	display: block;
+	width: 100%;
+	border: none;
+	font-size: 14px;
+	padding: 5px;
+	border-radius: 3px;
+	background-color: #666;
+	color: #FFF;
+	&:focus {
+		background-color: #555;
+	}
+}
+.btn {
+	border: none;
+	font-size: 14px;
+	padding: 5px;
+	border-radius: 3px;
+	background-color: #666;
+	color: #FFF;
+	margin: 10px 0 0;
+	cursor: pointer;
+	position: relative;
+	display: inline-block;
+	.primary-action {
+		background-color: orange;
+	}
+	&:hover {
+		background-color: #555;
+	}
+	&:active {
+		background-color: #444;
+		top: 1px;
+	}
+}
+
+.req {
+	color: #F00;
+}
+#fileupload {
+	display: none;
+}
+
+.upload {
+	margin: 10px 0;
+	cursor: pointer;
+}
+.upload .btn {
+	margin-top: 0;
+}
+.upload .files {
+	position: relative;
+	font-size: .75em;
+	display: inline-block;
+}
+.sidebar .upload p {
+	padding: 0;
+}

@@ -1,0 +1,44 @@
+html, body {
+	background-image: none;
+	background-color: #333;
+	
+	font-family: arial,helvetica,sans-serif;
+	font-size: 14px;
+	line-height: 18px;
+	
+	color: #FAFAFA;
+	text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+body div {
+	box-sizing: border-box;
+	// color: red;
+}
+
+.clearfix {
+	display: inline-block;
+	&:after {
+		visibility: hidden;
+		display: block;
+		font-size: 0;
+		content: " ";
+		clear: both;
+		height: 0;
+	}
+	* html & {
+		height: 1%;
+	}
+}
+.clearfix {
+	display: block;
+}
+/* close commented backslash hack */
+a {
+	color: inherit;
+	text-decoration: inherit;
+}
+.wrapper {
+	width: 60%;
+	max-width: 400px;
+	min-width: 350px;
+	padding: 20px 0 0;
+}

@@ -1,10 +1,50 @@
 $(function() {
 
+
 	function createJSON() {
 		$.get('rsrc/get-stuff.php', function(data) {
 			//awesome
 		});
 	}
+
+	// function rvupload(x) {
+
+	// 	$(document).on('click', '.submitrv', function() {
+	// 		createJSON();	
+	// 		var id = $('.rvid').val();
+	// 		var username = $('#name').val();
+	// 		var rvname = $('#rvname').val();
+	// 		var tags = $('#tags').val();
+	// 		var description = $('#description').val();
+	// 		var image = x;
+	// 		$.post('rsrc/upload.php', {username:username, rvname:rvname,tags:tags,description:description, image:image}, function(data) {
+	// 			console.log(data);
+	// 		});
+	// 	});
+
+	// }
+
+	// // file uplaod
+	// 'use strict';
+	// // Change this to the location of your server-side upload handler:
+	// var url = window.location.hostname === 'blueimp.github.io' ? '//jquery-file-upload.appspot.com/' : 'img/';
+	// $('#fileupload').fileupload({
+	// 	url: url,
+	// 	dataType: 'json',
+	// 	done: function (e, data) {
+	// 		$.each(data.result.files, function (index, file) {
+	// 			$('<p/>').text(file.name).appendTo('.files');
+	// 			rvupload(file.name);
+	// 		});
+	// 	},
+	// 	progressall: function (e, data) {
+	// 		var progress = parseInt(data.loaded / data.total * 100, 10);
+	// 		$('#progress .progress-bar').css(
+	// 			'width',
+	// 			progress + '%'
+	// 		);
+	// 	}
+	// }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
 	
 	function pages(pg, display, chNum) {
 		var maxPG = Math.ceil(display / chNum);

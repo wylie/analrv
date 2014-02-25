@@ -38,30 +38,19 @@ module.exports = function(grunt) {
 					style: 'expanded'
 				},
 				files: {
-					'live/css/styles.css': 'css/styles.scss'
+					'live/css/styles.css': 'dev/css/styles.scss'
 				}
 			}
 		},
 		copy: {
-			index: {
-				files: [
-					{expand: true, src: ['index.html'], dest: 'live/', filter: 'isFile'}
-				]
-			},
-			css: {
-				files: [
-					{expand: true, src: ['css/**'], dest: 'live/css', filter: 'isFile'}
-				]
-			},
-			js: {
-				files: [
-					{expand: true, src: ['js/**'], dest: 'live/js/', filter: 'isFile'}
-				]
+			main: {
+				src: 'dev/*',
+				dest: 'live/',
 			}
 		},
 		watch: {
 			html: {
-				files: ['*.html'],
+				files: ['dev/*.html'],
 				tasks: ['copy:index'],
 				options: {
 					spawn: false,
@@ -69,7 +58,7 @@ module.exports = function(grunt) {
 				}
 			},
 			css: {
-				files: ['css/*'],
+				files: ['dev/css/*'],
 				tasks: ['sass', 'copy:css'],
 				options: {
 					spawn: false,
@@ -77,7 +66,7 @@ module.exports = function(grunt) {
 				}
 			},
 			js: {
-				files: ['js/*'],
+				files: ['dev/js/*'],
 				tasks: ['copy:js'],
 				options: {
 					spawn: false,

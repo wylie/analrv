@@ -2,5 +2,7 @@ node_modules/
 
 rvs.json
 
+.sass-cache
+
 rsrc/OLD-upload.php
 rsrc/db_user_variables.php

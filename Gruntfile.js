@@ -61,6 +61,12 @@ module.exports = function(grunt) {
 					},
 					{
 						expand: true,
+						src: 'dev/img/rvs/*',
+						dest: 'live/img/rvs/',
+						flatten: true
+					},
+					{
+						expand: true,
 						src: 'dev/js/*',
 						dest: 'live/js/',
 						flatten: true

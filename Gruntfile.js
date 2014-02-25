@@ -13,24 +13,7 @@ module.exports = function(grunt) {
 					open: true
 				}
 			},
-			watch: {
-				css: {
-					files: ['scss/*.scss'],
-					tasks: ['sass:dist', 'copy:css'],
-					options: {
-						spawn: false,
-						livereload: false
-					}
-				},
-				js: {
-					files: ['js/*.js'],
-					tasks: ['copy:js'],
-					options: {
-						spawn: false,
-						livereload: false
-					}
-				}
-			}
+			watch: {}
 		},
 		sass: {
 			dev: {
@@ -72,15 +55,20 @@ module.exports = function(grunt) {
 						flatten: true
 					},
 					{
+						expand: true,
+						src: 'dev/rsrc/*',
+						dest: 'live/rsrc/',
+						flatten: true
+					},
+					{
 						src: 'dev/index.html',
 						dest: 'live/index.html',
 						filter: 'isFile'
 					},
 					{
-						expand: true,
-						src: 'dev/rsrc/*',
-						dest: 'live/rsrc/',
-						flatten: true
+						src: 'dev/rvs.json',
+						dest: 'live/rvs.json',
+						filter: 'isFile'
 					}
 				]
 			}
@@ -88,7 +76,7 @@ module.exports = function(grunt) {
 		watch: {
 			html: {
 				files: ['dev/*.html'],
-				tasks: ['copy:index'],
+				tasks: ['copy'],
 				options: {
 					spawn: false,
 					livereload: false
@@ -96,7 +84,7 @@ module.exports = function(grunt) {
 			},
 			css: {
 				files: ['dev/scss/*'],
-				tasks: ['sass', 'copy:css'],
+				tasks: ['copy'],
 				options: {
 					spawn: false,
 					livereload: false
@@ -104,7 +92,7 @@ module.exports = function(grunt) {
 			},
 			js: {
 				files: ['dev/js/*'],
-				tasks: ['copy:js'],
+				tasks: ['copy'],
 				options: {
 					spawn: false,
 					livereload: false
@@ -120,20 +108,22 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks("grunt-contrib-watch");
 
 	grunt.registerTask("phpwatch", [
-		"php:watch"
+		"php",
+		"watch"
 	]);
 
 	grunt.registerTask("server", [
-		"php"
+		"phpwatch"
 	]);
 
 	grunt.registerTask("dev", [
+		"sass:live",
 		"watch"
 	]);
 
 	grunt.registerTask("live", [
 		"sass:live",
-		"copy:dev"
+		"copy"
 	]);
 	
 };

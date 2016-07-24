@@ -3,25 +3,24 @@ module.exports = function(grunt) {
 	// project config
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		php: {
-			serve: {
+
+    express: {
+			server: {
 				options: {
-					port: 7007,
-					hostname: 'localhost',
-					base: 'live/',
-					keepalive: true,
-					open: true
+					port: 8070,
+					host: 'http://localhost',
+					bases: 'dist'
 				}
-			},
-			watch: {}
+			}
 		},
+
 		sass: {
 			dev: {
 				options: {
 					style: 'expanded'
 				},
 				files: {
-					'live/css/styles.css': 'dev/scss/styles.scss'
+					'dist/css/styles.css': 'dev/scss/styles.scss'
 				}
 			},
 			live: {
@@ -29,101 +28,136 @@ module.exports = function(grunt) {
 					style: 'compressed'
 				},
 				files: {
-					'live/css/styles.css': 'dev/scss/styles.scss'
+					'dist/css/styles.css': 'dev/scss/styles.scss'
 				}
 			}
 		},
-		copy: {
-			dev: {
+
+    copy: {
+			html: {
 				files: [
 					{
 						expand: true,
-						src: 'dev/img/*',
-						dest: 'live/img/',
-						flatten: true
-					},
-					{
-						expand: true,
-						src: 'dev/img/rvs/*',
-						dest: 'live/img/rvs/',
-						flatten: true
-					},
-					{
-						expand: true,
-						src: 'dev/js/*',
-						dest: 'live/js/',
-						flatten: true
-					},
-					{
-						expand: true,
-						src: 'dev/rsrc/*',
-						dest: 'live/rsrc/',
-						flatten: true
-					},
-					{
-						src: 'dev/index.html',
-						dest: 'live/index.html',
+						flatten: true,
+						src: ['dev/*.html'],
+						dest: 'dist/',
 						filter: 'isFile'
-					},
+					}
+				]
+			},
+			images: {
+				files: [
 					{
-						src: 'dev/rvs.json',
-						dest: 'live/rvs.json',
+						expand: true,
+						cwd: 'dev/img',
+						src: '**',
+						dest: 'dist/img'
+					}
+				]
+			},
+			js: {
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['dev/js/**'],
+						dest: 'dist/js',
+						filter: 'isFile'
+					}
+				]
+			},
+			json: {
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['dev/data/**'],
+						dest: 'dist/data',
+						filter: 'isFile'
+					}
+				]
+			},
+			php: {
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['dev/actions/**'],
+						dest: 'dist/actions',
 						filter: 'isFile'
 					}
 				]
 			}
 		},
-		watch: {
+
+    watch: {
 			html: {
 				files: ['dev/*.html'],
-				tasks: ['copy'],
+				tasks: ['copy:html'],
 				options: {
-					spawn: false,
-					livereload: false
+					livereload: true,
 				}
 			},
 			css: {
-				files: ['dev/scss/*'],
-				tasks: ['copy'],
+				files: ['dev/less/*.less'],
+				tasks: ['less', 'postcss'],
 				options: {
-					spawn: false,
-					livereload: false
+					livereload: true,
 				}
 			},
 			js: {
-				files: ['dev/js/*'],
-				tasks: ['copy'],
+				files: ['dev/js/*.js'],
+				tasks: ['copy:js'],
 				options: {
-					spawn: false,
-					livereload: false
+					livereload: true,
+				}
+			},
+			json: {
+				files: ['dev/data/*.json'],
+				tasks: ['copy:json'],
+				options: {
+					livereload: true,
+				}
+			},
+			php: {
+				files: ['dev/actions/*.php'],
+				tasks: ['copy:php'],
+				options: {
+					livereload: true,
 				}
 			}
-		}
+		},
 
 	});
 
-	grunt.loadNpmTasks("grunt-php");
+  grunt.loadNpmTasks('grunt-express');
 	grunt.loadNpmTasks("grunt-contrib-sass");
 	grunt.loadNpmTasks("grunt-contrib-copy");
 	grunt.loadNpmTasks("grunt-contrib-watch");
 
-	grunt.registerTask("phpwatch", [
-		"php",
-		"watch"
+  grunt.registerTask('default', [
+		'build',
+		'server'
 	]);
 
-	grunt.registerTask("server", [
-		"phpwatch"
+	grunt.registerTask('build', [
+		'copy',
+		'sass'
 	]);
 
-	grunt.registerTask("dev", [
-		"sass:live",
-		"watch"
+	grunt.registerTask('dev', [
+		'express:dev',
+		'sass',
+		'copy',
+		'watch'
 	]);
 
-	grunt.registerTask("live", [
-		"sass:live",
-		"copy"
+	grunt.registerTask('server', [
+		'express',
+		'watch',
+		'sass',
+		'copy',
+		'express-keepalive'
 	]);
-	
+
 };

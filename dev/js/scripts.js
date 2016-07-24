@@ -10,7 +10,7 @@ $(function() {
 	// function rvupload(x) {
 
 	// 	$(document).on('click', '.submitrv', function() {
-	// 		createJSON();	
+	// 		createJSON();
 	// 		var id = $('.rvid').val();
 	// 		var username = $('#name').val();
 	// 		var rvname = $('#rvname').val();
@@ -45,7 +45,7 @@ $(function() {
 	// 		);
 	// 	}
 	// }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
-	
+
 	function pages(pg, display, chNum) {
 		var maxPG = Math.ceil(display / chNum);
 		// disable newer if at page 1
@@ -53,13 +53,13 @@ $(function() {
 			$('[data-direction="back"]').attr('disabled', true);
 		} else {
 			$('[data-direction="back"]').attr('disabled', false);
-		} 
+		}
 		// disable older if at last page
 		if(pg === maxPG) {
 			$('[data-direction="next"]').attr('disabled', true);
 		} else {
 			$('[data-direction="next"]').attr('disabled', false);
-		} 
+		}
 		$('.pg-num').text(pg);
 	}
 
@@ -86,8 +86,8 @@ $(function() {
 		var five = y - 4; // 54
 		displayRVs(x, one, two, three, four, five);
 	}
-		
-	$.getJSON('rvs.json', function(data) {
+
+	$.getJSON('data/rvs.json', function(data) {
 		$.each(data, function(index, rvs) {
 			var setup = [];
 			for(var i = 0; i < rvs.length; i++) {
@@ -100,8 +100,8 @@ $(function() {
 				var description = '<li><strong>Description:</strong> ' + rvs[i].description + '</li>';
 				var image = rvs[i].image;
 				if(image) {
-					var image = '<li><img src="' + image + '" /></li>';
-				}							
+					var image = '<li><img class="img" src="' + image + '" /></li>';
+				}
 				var date = '<li><strong>Spotted on:</strong> ' + rvs[i].date + '</li>';
 				setup.push('<ul class="rv" id="' + rvs[i].number + '">' + name + user + tags + description + image + date + '</ul>');
 			}
@@ -128,12 +128,12 @@ $(function() {
 				changepage(setup, display - newNum);
 				// send off the page number to enable or disable the buttons based on the page number
 				pages(pg, display, chNum);
-				
+
 			});
-							
+
 			changepage(setup, setup.length-1);
-			
+
 		});
 	});
-		
+
 });
